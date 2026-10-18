@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install *)",
+      "PowerShell(Get-ChildItem -Name | Where-Object { $_ -notmatch '^node_modules$|^\\\\.next$' })",
+      "PowerShell(npx tsc --noEmit 2>&1)",
+      "PowerShell(npm run *)",
+      "Skill(run)",
+      "PowerShell(Start-Process powershell -ArgumentList \"-NoProfile -Command `\"cd 'C:\\\\Users\\\\Мария\\\\olesya'; npm run dev 2>&1`\"\" -WindowStyle Minimized; Start-Sleep -Seconds 5; Write-Output \"Dev server started\")",
+      "PowerShell(Start-Sleep -Seconds 8; try { $r = Invoke-WebRequest -Uri \"http://localhost:3000\" -TimeoutSec 10 -UseBasicParsing; Write-Output \"Status: $\\($r.StatusCode\\)\"; Write-Output \\($r.Content.Substring\\(0, [Math]::Min\\(200, $r.Content.Length\\)\\)\\) } catch { Write-Output \"Error: $_\" })",
+      "PowerShell(Start-Process \"chrome\" -ArgumentList \"http://localhost:3000\" ; Start-Sleep -Seconds 6)",
+      "PowerShell(Start-Process \"chrome\" -ArgumentList \"http://localhost:3000\")",
+      "PowerShell(New-Item *)",
+      "PowerShell(Start-Process \"chrome\" -ArgumentList \"http://localhost:3000/about\")",
+      "PowerShell(Copy-Item *)",
+      "PowerShell(cd \"C:\\\\Users\\\\Мария\\\\olesya\"; Start-Process powershell -ArgumentList \"-NoProfile -Command `\"cd 'C:\\\\Users\\\\Мария\\\\olesya'; npm run dev 2>&1 | Tee-Object -FilePath 'C:\\\\Users\\\\81E4~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\devserver.log'`\"\" -WindowStyle Hidden; Start-Sleep -Seconds 8; Get-Content \"C:\\\\Users\\\\81E4~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\devserver.log\" -ErrorAction SilentlyContinue | Select-Object -Last 20)",
+      "PowerShell(taskkill *)",
+      "PowerShell(Remove-Item *)",
+      "WebFetch(domain:localhost)",
+      "PowerShell(\\(Get-Command npx -ErrorAction SilentlyContinue\\) -ne $null3.)",
+      "PowerShell(gh auth *)"
+    ]
+  }
+}
