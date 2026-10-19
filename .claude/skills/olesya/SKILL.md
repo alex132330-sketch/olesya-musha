@@ -35,7 +35,7 @@ data/                 — статические данные (TypeScript-мас
 
 lib/
   store.ts            — Zustand-корзина (useCartStore), persist в localStorage под ключом "olesya-cart"
-  telegram.ts         — утилита форматирования заявок (sendBookingToTelegram, пока stub)
+  telegram.ts         — утилита отправки заявок через Bot API (sendBookingToTelegram)
   utils.ts            — cn() (classnames)
 
 types/index.ts        — все TypeScript-типы: CartProduct, CartItem, Oil, OilCategory, OilScent, ConsultationForm
@@ -98,8 +98,10 @@ npm run lint     # ESLint
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase                           | Нет                  |
 | `NEXT_PUBLIC_SITE_URL`      | Публичный URL (sitemap, метатеги)      | Нет                  |
 
-**Telegram-интеграция**: `app/actions/contact.ts` — реальный вызов API (нужны токены).  
-`lib/telegram.ts` — stub для `BookingModal` (логирует в консоль, имитирует задержку — TODO: раскомментировать реальный вызов).
+**Telegram-интеграция**: оба модуля активны и отправляют реальные сообщения.  
+`app/actions/contact.ts` — Server Action для формы `/contacts`.  
+`lib/telegram.ts` — используется `BookingModal` для формы записи на услугу.  
+Оба читают токены из `.env`: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`.
 
 ---
 
@@ -196,10 +198,9 @@ npm run build
 
 `NEXT_PUBLIC_SUPABASE_URL` и `NEXT_PUBLIC_SUPABASE_ANON_KEY` — добавить когда Supabase будет подключён.
 
-### Telegram-интеграция перед деплоем
+### Telegram-интеграция
 
-В `lib/telegram.ts` раскомментировать реальный вызов Bot API (заменив stub на fetch).  
-Проверить что `app/actions/contact.ts` получает токены из env (уже реализовано).
+Оба модуля уже активны. Перед деплоем убедиться, что переменные `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` добавлены в Vercel → Settings → Environment Variables.
 
 ### Деплой
 
@@ -213,8 +214,8 @@ GitHub → Vercel → Add New Project → выбрать репозиторий 
 
 ## Известные точки внимания
 
-- **`lib/telegram.ts`** — stub, не отправляет реальные сообщения. Раскомментировать перед продакшном.
+- **`lib/telegram.ts`** — Telegram-интеграция активна, отправляет реальные сообщения через Bot API. Токены `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` берутся из `.env`.
 - **`data/products.ts`** — использует устаревший тип `Product`, нужен только для раздела services.
-- **Изображения масел** — часть лежит в корне проекта (кириллические имена файлов), часть в `public/images/`. При добавлении новых масел класть в `public/images/`.
+- **Изображения масел** — все хранятся в `public/images/`. При добавлении новых масел класть туда же.
 - **`/checkout`** — страница есть, но логика оплаты не реализована.
 - **Supabase** — в env.example есть, но нигде не используется. Планируется для хранения отзывов/вопросов.
