@@ -10,11 +10,17 @@
 
 ![Страница сайта-Услуги](images/localhost_uslugi.png)
 
+![Услуги-Заявка на услугу](images/12-5_zayavka.png)
+
 ![Страница сайта-Масла](images/localhost_oils.png)
 
 ![Страница сайта-Обсуждения](images/localhost_discussions.png)
 
 ![Страница сайта-Контакты](images/localhost_contacts.png)
+
+![Контакты-Обратная связь](/images/12-3_obr%20svyaz.png)
+
+![Контакты-Телеграм-Бот](/images/12-4_Tbot.png))
 
 ---
 
