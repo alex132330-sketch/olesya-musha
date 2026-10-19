@@ -8,13 +8,13 @@
 
 ![Главная страница сайта-мобильная версия](images/localhost_glavnaya_(iPhone).png)
 
-![Главная страница сайта-локальная версия](images/localhost_uslugi.png)
+![Страница сайта-Услуги](images/localhost_uslugi.png)
 
-![Главная страница сайта-локальная версия](images/localhost_oils.png)
+![Страница сайта-Масла](images/localhost_oils.png)
 
-![Главная страница сайта-локальная версия](images/localhost_discussions.png)
+![Страница сайта-Обсуждения](images/localhost_discussions.png)
 
-![Главная страница сайта-локальная версия](images/localhost_contacts.png)
+![Страница сайта-Контакты](images/localhost_contacts.png)
 
 ---
 
