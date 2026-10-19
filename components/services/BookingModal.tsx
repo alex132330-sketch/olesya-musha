@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import { X, Loader2 } from "lucide-react";
-import { sendBookingToTelegram } from "@/lib/telegram";
 
 const schema = z.object({
   name: z.string().min(2, "Минимум 2 символа"),
@@ -72,7 +71,12 @@ export default function BookingModal({
   }, [isOpen, handleKey]);
 
   const onSubmit = async (data: FormData) => {
-    await sendBookingToTelegram(data);
+    const res = await fetch("/api/booking", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error("Ошибка отправки заявки");
     toast.success("Заявка отправлена!", {
       description: "Олеся свяжется с вами в ближайшее время 🌿",
     });

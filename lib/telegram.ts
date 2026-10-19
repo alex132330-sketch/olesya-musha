@@ -28,17 +28,24 @@ function formatMessage(data: TelegramBookingPayload): string {
 export async function sendBookingToTelegram(
   data: TelegramBookingPayload
 ): Promise<void> {
-  // TODO: замените на реальный вызов Telegram Bot API
-  //
-  // const botToken = process.env.TELEGRAM_BOT_TOKEN;
-  // const chatId  = process.env.TELEGRAM_CHAT_ID;
-  //
-  // await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ chat_id: chatId, text: formatMessage(data) }),
-  // });
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
 
-  console.log("[Telegram] Sending booking:", formatMessage(data));
-  await new Promise((r) => setTimeout(r, 700)); // имитация сетевого запроса
+  if (!botToken || !chatId) {
+    throw new Error("TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID is not configured");
+  }
+
+  const response = await fetch(
+    `https://api.telegram.org/bot${botToken}/sendMessage`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text: formatMessage(data) }),
+    }
+  );
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`Telegram API error ${response.status}: ${error}`);
+  }
 }
