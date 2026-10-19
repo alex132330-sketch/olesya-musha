@@ -14,6 +14,8 @@
 
 ![Страница сайта-Масла](images/localhost_oils.png)
 
+![Страница сайта-Масла](images/localhost_reviews.png)
+
 ![Страница сайта-Обсуждения](images/localhost_discussions.png)
 
 ![Страница сайта-Контакты](images/localhost_contacts.png)
