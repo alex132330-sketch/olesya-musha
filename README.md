@@ -8,6 +8,14 @@
 
 ![Главная страница сайта-мобильная версия](images/localhost_glavnaya_(iPhone).png)
 
+![Главная страница сайта-локальная версия](images/localhost_uslugi.png)
+
+![Главная страница сайта-локальная версия](images/localhost_oils.png)
+
+![Главная страница сайта-локальная версия](images/localhost_discussions.png)
+
+![Главная страница сайта-локальная версия](images/localhost_contacts.png)
+
 ---
 
 ## Для кого этот сайт
